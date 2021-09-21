@@ -8,14 +8,12 @@
 #
 # or in the "license" file accompanying this file. This file is
 # distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
-# ANY KIND, either express or implied. See the License for the specific
+# mock.ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 import logging
 import os
 
-from mock import patch, ANY
-
-from awscli.testutils import FileCreator, BaseAWSCommandParamsTest
+from awscli.testutils import mock, FileCreator, BaseAWSCommandParamsTest
 from awscli.clidriver import create_clidriver
 
 logger = logging.getLogger(__name__)
@@ -37,10 +35,10 @@ class BaseTestCLIFollowParamFile(BaseAWSCommandParamsTest):
         # is what happened to the arguments before they were passed to botocore
         # which we get from the params={} key. For binary types we will fail in
         # python 3 with an rc of 255 and get an rc of 0 in python 2 where it
-        # can't tell the difference, so we pass ANY here to ignore the rc.
+        # can't tell the difference, so we pass mock.ANY here to ignore the rc.
         self.assert_params_for_cmd(cmd,
                                    params={'FunctionName': expected_param},
-                                   expected_rc=ANY)
+                                   expected_rc=mock.ANY)
 
 
 class TestCLIFollowParamFileDefault(BaseTestCLIFollowParamFile):

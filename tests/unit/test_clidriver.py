@@ -15,12 +15,12 @@ import contextlib
 import platform
 import re
 
+from awscli.testutils import mock
 from awscli.testutils import unittest
 from awscli.testutils import BaseAWSCommandParamsTest
 import logging
 import io
 
-import mock
 import awscrt.io
 from awscli.compat import six
 from botocore import xform_name

@@ -15,10 +15,10 @@ import os
 import json
 import logging
 
-import mock
 import pytest
 from ruamel.yaml import YAML
 
+from awscli.testutils import mock, unittest, aws, capture_output
 from awscli.clidriver import create_clidriver
 
 # NOTE: This should be a standalone pytest fixture.  However, fixtures cannot

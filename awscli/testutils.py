@@ -31,23 +31,15 @@ import platform
 import contextlib
 import binascii
 import math
+import unittest
 from pprint import pformat
 from subprocess import Popen, PIPE
-import unittest
+from unittest import mock
 
 from awscli.compat import StringIO
 
 from ruamel.yaml import YAML
 
-try:
-    import mock
-except ImportError as e:
-    # In the off chance something imports this module
-    # that's not suppose to, we should not stop the CLI
-    # by raising an ImportError.  Now if anything actually
-    # *uses* this module that isn't suppose to, that's a
-    # different story.
-    mock = None
 from awscli.compat import six
 from botocore.session import Session
 from botocore.exceptions import ClientError
